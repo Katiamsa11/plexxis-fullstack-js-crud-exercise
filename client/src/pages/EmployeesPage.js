@@ -1,17 +1,17 @@
 import React, { useMemo, useState, useEffect } from "react";
 import Table from "../components/Table/Table";
+import LoadingPage from "../components/Loading/LoadingPage";
 import { fetchEmployees, TabTitle } from "../utils/Utils";
 
 
-
 function EmployeesPage() {
-  //function to change tab title dynamically 
+  //function to change tab title dynamically
   TabTitle("Employee Page");
-   // data state to store the employees API data. Its initial value is an empty array
-   const [data, setData] = useState([]);
-   const [isError, setIsError] = useState(false);
-   // Using useEffect to call the API once mounted and set the data
-   useEffect(() => {
+  // data state to store the employees API data. Its initial value is an empty array
+  const [data, setData] = useState([]);
+  const [isError, setIsError] = useState(false);
+  // Using useEffect to call the API once mounted and set the data
+  useEffect(() => {
     fetchEmployees()
       .then((response) => {
         setData(response.data);
@@ -22,6 +22,8 @@ function EmployeesPage() {
       });
   }, []);
 
+
+
   const columns = useMemo(
     () => [
       {
@@ -29,44 +31,52 @@ function EmployeesPage() {
         columns: [
           {
             Header: "Name",
-            accessor: "name"
+            accessor: "name",
           },
           {
             Header: "Code",
-            accessor: "code"
+            accessor: "code",
           },
           {
             Header: "Profession",
-            accessor: "profession"
+            accessor: "profession",
           },
           {
             Header: "Color",
-            accessor: "color"
+            accessor: "color",
           },
           {
             Header: "City",
-            accessor: "city"
+            accessor: "city",
           },
           {
             Header: "Branch",
-            accessor: "branch"
+            accessor: "branch",
           },
           {
             Header: "Assigned",
-            accessor: "assigned"
-          }
-        ]
-      }
+            accessor: "assigned",
+          },
+        ],
+      },
     ],
     []
   );
 
+  if (data.length === 0) {
+    return <LoadingPage />;
+  }
+
+  if (isError) {
+    return <h1>....There was an unexpected Error. Refresh page!</h1>;
+  }
+
+
   return (
     <div className="App">
-    <Table columns={columns} data={data} />
+      <Table columns={columns} data={data} />
     </div>
   );
-  
 }
 
 export default EmployeesPage;

@@ -1,0 +1,49 @@
+@use "../../styles/variables" as *;
+@use "../../styles/mixins" as *;
+
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loader {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0 auto;
+
+  @include tablet {
+    flex-direction: row;
+  }
+
+
+&__container {
+  border: 1rem solid $color-brand-secondary;
+  border-radius: 50%;
+  border-top: 1rem solid $color-brand-primary;
+  border-bottom: 1rem solid $color-brand-primary;
+  width: 8rem;
+  height: 8rem;
+  animation: spin 2s linear infinite;
+
+  @include tablet {
+    width: 11.25rem;
+    height: 11.25rem;
+
+  }
+}
+
+&__text {
+  color: $color-text-primary;
+  padding-left: 2rem;
+  font-size: .75rem;
+
+  @include tablet {
+  font-size: 2rem;
+  }
+}
+}

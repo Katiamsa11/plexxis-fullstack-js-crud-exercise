@@ -1,2 +1,15 @@
 @use "../../styles/mixins" as *;
 @use "../../styles/variables" as *;
+
+table {
+  width: 100%;
+}
+
+th, td {
+  text-align: left;
+  padding: .5rem;
+}
+
+tr:nth-child(even) {
+  background-color: $color-background-secondary;
+}
