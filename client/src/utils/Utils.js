@@ -11,7 +11,13 @@ const API_URL_EMPLOYEES = `${API_URL}/employees`;
 
 
 
+
 //API functions calls
 export const fetchEmployees = () => {
   return axios.get(API_URL_EMPLOYEES);
 };
+
+export const PostEmployees = () => {
+  return axios.post(API_URL_EMPLOYEES);
+};
+

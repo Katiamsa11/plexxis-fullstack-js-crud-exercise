@@ -1,6 +1,7 @@
 import React, {useState} from "react";
 import "./Table.scss";
 import { useTable, useFilters, useSortBy } from "react-table";
+import { Link } from "react-router-dom";
 
 function Table({ columns, data }) {
 // Create a state
@@ -29,12 +30,17 @@ const handleFilterChange = e => {
 };
 
   return (
-    <>
+    <section className="table">
+    <div className="table__wrapper">
     <input
     value={filterInput}
     onChange={handleFilterChange}
     placeholder={"Search name"}
     />
+    <Link to="/employees/add-new" className="table__link">
+    <button>create new employee</button>
+    </Link>
+    </div>
     <table {...getTableProps()}>
       <thead>
         {headerGroups.map(headerGroup => (
@@ -67,7 +73,7 @@ const handleFilterChange = e => {
         })}
       </tbody>
     </table>
-    </>
+    </section>
   );
 }
 
