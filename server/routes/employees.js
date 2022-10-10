@@ -29,12 +29,10 @@ router.post("/", (req, res) => {
     !branch ||
     !assigned
   ) {
-    return res
-      .status(400)
-      .json({
-        error:
-          "please input name, code, profession, color, city, branch and if its assigned",
-      });
+    return res.status(400).json({
+      error:
+        "please input name, code, profession, color, city, branch and if its assigned",
+    });
   }
   // create a new employee
   const newEmployee = {
@@ -46,12 +44,12 @@ router.post("/", (req, res) => {
     city: req.body.city,
     branch: req.body.branch,
     assigned: req.body.assigned,
-    timestamp: Date.now(),
   };
 
   // Read the file
   const employees = utils.readEmployees();
   employees.push(newEmployee);
+  // write the file
   fs.writeFileSync("./data/employees.json", JSON.stringify(employees));
 
   res.status(201).json(newEmployee);
@@ -70,6 +68,8 @@ router.delete("/employee/:employeeId", (req, res) => {
   }
   const employeeToDelete = employees.indexOf(requestedEmployee);
   employees.splice(employeeToDelete, 1);
+
+  // write the file
   fs.writeFileSync("./data/employees.json", JSON.stringify(employees));
 
   res.status(204).send();
