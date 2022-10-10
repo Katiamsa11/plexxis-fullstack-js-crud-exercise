@@ -95,52 +95,52 @@ function NewEmployeePage() {
 };
 
   return (
-    <div className="newWarehouse-form">
-    <header className="newWarehouse-form__header">
+    <div className="employee-form">
+    <header className="employee-form__header">
       <img
-        className="newWarehouse-form__back"
+        className="employee-form__back"
         src={backArrow}
         alt="arrow to navigate back"
         onClick={() => navigate(-1)}
       />
-      <h1 className="newWarehouse-form__title"> Add New Employee</h1>
+      <h1 className="employee-form__title"> Add New Employee</h1>
     </header>
-    <form  onSubmit={handleSubmit} className="newWarehouse-form__form">
-      <div className="newWarehouse-form__section newWarehouse-form__section--left">
-        <label className="newWarehouse-form__label">
+    <form  onSubmit={handleSubmit} className="employee-form__form">
+      <div className="employee-form__section employee-form__section--left">
+        <label className="employee-form__label">
           Employee Name
           <input
-          className="newWarehouse-form__input"
+          className="employee-form__input"
             type="text"
             placeholder="Employee Name"
             value={name}
             onChange={handleChangeName}
           />
         </label>
-        <label className="newWarehouse-form__label">
+        <label className="employee-form__label">
         Employee Code
           <input
-            className="newWarehouse-form__input"
+            className="employee-form__input"
             type="text"
             placeholder="Employee Code"
             value={code}
             onChange={handleChangeCode}
           />
         </label>
-        <label className="newWarehouse-form__label">
+        <label className="employee-form__label">
           Employee Profession
           <input
-          className="newWarehouse-form__input"
+          className="employee-form__input"
             type="text"
             placeholder="City"
             value={profession}
             onChange={handleChangeProfession}
           />
         </label>
-        <label className="newWarehouse-form__label">
+        <label className="employee-form__label">
         Employee Color
           <input
-          className="newWarehouse-form__input"
+          className="employee-form__input"
             type="text"
             placeholder="Country"
             value={color}
@@ -148,31 +148,31 @@ function NewEmployeePage() {
           />
         </label>
       </div>
-      <div className="newWarehouse-form__section">
-        <label className="newWarehouse-form__label">
+      <div className="employee-form__section">
+        <label className="employee-form__label">
           Employee City
           <input
-          className="newWarehouse-form__input"
+          className="employee-form__input"
             type="text"
             placeholder="Contact Name"
             value={city}
             onChange={handleChangeCity}
           />
         </label>
-        <label className="newWarehouse-form__label">
+        <label className="employee-form__label">
         Employee Branch
           <input
-          className="newWarehouse-form__input"
+          className="employee-form__input"
             type="text"
             placeholder="Employee Branch"
             value={branch}
             onChange={handleChangeBranch}
           />
         </label>
-        <label className="newWarehouse-form__label">
+        <label className="employee-form__label">
         Employee Status
           <input
-          className="newWarehouse-form__input"
+          className="employee-form__input"
             type="text"
             placeholder="Phone Number"
             value={assigned}
@@ -180,16 +180,16 @@ function NewEmployeePage() {
           />
         </label>
       </div>
-      <footer className="newWarehouse-form__footer">
+      <footer className="employee-form__footer">
         <Link
           to="/"
-          className="newWarehouse-form__button button button--cancel"
+          className="employee-form__button button button--cancel"
         >
           Cancel
         </Link>
         <button
           type="submit"
-          className="newWarehouse-form__button button button--primary"
+          className="employee-form__button button button--primary"
         >
           + Add Employee
         </button>
