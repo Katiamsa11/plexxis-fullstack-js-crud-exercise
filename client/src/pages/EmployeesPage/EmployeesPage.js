@@ -1,9 +1,11 @@
 import React, { useMemo, useState, useEffect } from "react";
-import Table from "../components/Table/Table";
-import LoadingPage from "../components/Loading/LoadingPage";
-import imageDelete from "../assets/icons/delete.svg";
-import imageEdit from "../assets/icons/edit.svg";
-import { fetchEmployees, TabTitle, deleteEmployee } from "../utils/Utils";
+import Table from "../../components/Table/Table";
+import LoadingPage from "../../components/Loading/LoadingPage";
+import imageDelete from "../../assets/icons/delete.svg";
+import imageEdit from "../../assets/icons/edit.svg";
+import { fetchEmployees, TabTitle, deleteEmployee } from "../../utils/Utils";
+import { Link } from "react-router-dom";
+import "../EmployeesPage/EmployeesPage.scss";
 
 function EmployeesPage() {
   //function to change tab title dynamically
@@ -47,16 +49,22 @@ function EmployeesPage() {
             accessor: "name",
           },
           {
-            Header: "Code",
-            accessor: "code",
+            Header: "Color",
+            accessor: "color",
+            Cell:({cell:{value}}) => {
+              return (
+                <div className="color" style={{background:value}}>
+                </div>
+              )
+            },
           },
           {
             Header: "Profession",
             accessor: "profession",
           },
           {
-            Header: "Color",
-            accessor: "color",
+            Header: "Code",
+            accessor: "code",
           },
           {
             Header: "City",
@@ -67,23 +75,30 @@ function EmployeesPage() {
             accessor: "branch",
           },
           {
-            Header: "Assigned",
+            Header: "Status",
             accessor: "assigned",
+            Cell:({cell:{value}}) => {
+              const assignment = value.toString();
+              return (
+                <div className="badge" style={{background: assignment === "true" ? "#567E9B" : "#AEAFB3"}}>
+                  {assignment === "true" ? "Assigned" : "Unassigned"}
+                </div>
+
+              )
+            }
           },
           {
-            Header: "Action",
-            accessor: (originalRow, rowIndex) => (
+            Header: "",
+            accessor: (originalRow) => (
               <div>
                 <img
                   src={imageDelete}
                   alt="delete icon"
                   onClick={() => handleDelete(originalRow.id)}
                 />
-                <img
-                src={imageEdit}
-                alt="edit icon"
-                onClick={() => handleDelete(rowIndex.id)}
-              />
+                <Link to={`/employee/edit/${originalRow.id}`}>
+                  <img src={imageEdit} alt="edit icon" />
+                </Link>
               </div>
             ),
             id: "id",
@@ -103,7 +118,7 @@ function EmployeesPage() {
   }
 
   return (
-    <div className="App">
+    <div className="employees">
       <Table columns={columns} data={data} />
     </div>
   );

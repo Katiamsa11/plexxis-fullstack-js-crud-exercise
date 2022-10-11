@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./Table.scss";
 import { useTable, useFilters, useSortBy } from "react-table";
 import { Link } from "react-router-dom";
+import sort from "../../assets/icons/sort.svg";
 
 function Table({ columns, data }) {
   // Create a state
@@ -52,12 +53,14 @@ function Table({ columns, data }) {
                   className={
                     column.isSorted
                       ? column.isSortedDesc
-                        ? "sort-desc"
+                        ? 
+                        "sort-desc"
                         : "sort-asc"
                       : ""
                   }
                 >
                   {column.render("Header")}
+                  <img className="sort" src={sort} alt="sorting icon"/>
                 </th>
               ))}
             </tr>

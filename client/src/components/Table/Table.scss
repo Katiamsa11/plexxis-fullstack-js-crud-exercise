@@ -3,6 +3,12 @@
 
 table {
   width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  background-color: $color-brand-primary;
+  color: $color-background-primary;
 }
 
 th, td {
@@ -12,4 +18,8 @@ th, td {
 
 tr:nth-child(even) {
   background-color: $color-background-secondary;
+}
+
+.sort {
+  filter: red;
 }
