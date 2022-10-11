@@ -5,7 +5,12 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npx nodemon server.js"
+    "start": "npx nodemon server.js",
+    "migrate": "npx knex migrate:latest",
+    "migrate:down": "npx knex migrate:down",
+    "migrate:up": "npx knex migrate:up",
+    "migrate:rollback": "npx knex migrate:rollback",
+    "seed": "npx knex seed:run"
   },
   "keywords": [],
   "author": "",
@@ -15,6 +20,7 @@
     "crypto": "^1.0.1",
     "express": "^4.18.2",
     "fs": "^0.0.1-security",
+    "knex": "^2.3.0",
     "nodemon": "^2.0.20",
     "sqlite3": "^5.1.2"
   }
