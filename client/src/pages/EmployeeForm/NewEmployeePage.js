@@ -5,7 +5,7 @@ import errorImg from "../../assets/icons/error-24px.svg";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
-import "../../pages/NewEmployee/NewEmployeePage.scss";
+import "../EmployeeForm/EmployeeForm.scss";
 
 function NewEmployeePage() {
   //function to change tab title dynamically
@@ -147,7 +147,7 @@ function NewEmployeePage() {
     }
 
     axios
-      .post("http://localhost:8080/employees", NewEmployee)
+      .post("http://localhost:5000/employees", NewEmployee)
       .then((response) => {
         setSuccess(true);
       })
