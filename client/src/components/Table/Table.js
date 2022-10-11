@@ -41,7 +41,7 @@ function Table({ columns, data }) {
           placeholder={"Search name"}
         />
         <Link to="/employees/add-new" className="table__link">
-          <button className="table__button">create new employee +</button>
+          <button className="table__button">create new employee + </button>
         </Link>
       </div>
       <table {...getTableProps()}>

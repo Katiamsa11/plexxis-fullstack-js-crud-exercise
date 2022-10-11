@@ -1,4 +1,4 @@
-import React, { useMemo, useState, useEffect } from "react";
+import React, { useMemo, useState, useEffect, useCallback } from "react";
 import Table from "../../components/Table/Table";
 import LoadingPage from "../../components/Loading/LoadingPage";
 import imageDelete from "../../assets/icons/delete.svg";
@@ -28,16 +28,19 @@ function EmployeesPage() {
   }, [reload]);
 
   //delete bookings
-  const handleDelete = (id) => {
-    deleteEmployee(id)
-      .then((response) => {
-        setReload(reload + 1);
-      })
-      .catch((error) => {
-        console.log(error);
-        setIsError("Something Went Wrong! Please Try Again.");
-      });
-  };
+  const handleDelete = useCallback(
+    (id) => {
+      deleteEmployee(id)
+        .then((response) => {
+          setReload(reload + 1);
+        })
+        .catch((error) => {
+          console.log(error);
+          setIsError("Something Went Wrong! Please Try Again.");
+        });
+    },
+    [reload]
+  );
 
   const columns = useMemo(
     () => [
@@ -77,15 +80,14 @@ function EmployeesPage() {
             Header: "Status",
             accessor: "assigned",
             Cell: ({ cell: { value } }) => {
-              const assignment = value.toString();
               return (
                 <div
                   className="badge"
                   style={{
-                    background: assignment === "true" ? "#567E9B" : "#AEAFB3",
+                    background: value === 1 ? "#567E9B" : "#AEAFB3",
                   }}
                 >
-                  {assignment === "true" ? "Assigned" : "Unassigned"}
+                  {value === 1 ? "Assigned" : "Unassigned"}
                 </div>
               );
             },
@@ -109,7 +111,7 @@ function EmployeesPage() {
         ],
       },
     ],
-    []
+    [handleDelete]
   );
 
   if (data.length === 0) {

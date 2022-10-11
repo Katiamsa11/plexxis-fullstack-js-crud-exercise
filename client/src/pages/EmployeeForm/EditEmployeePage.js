@@ -148,6 +148,17 @@ function EditEmployeePage() {
     if (!assigned) {
       setAssignedError(true);
     }
+    if (
+      !name ||
+      !code ||
+      !profession ||
+      !color ||
+      !city ||
+      !branch ||
+      !assigned 
+    ) {
+      return;
+    }
 
     axios
       .put("http://localhost:5000/employees/employee/" + id, updatedEmployee)

@@ -146,6 +146,18 @@ function NewEmployeePage() {
       setAssignedError(true);
     }
 
+    if (
+      !name ||
+      !code ||
+      !profession ||
+      !color ||
+      !city ||
+      !branch ||
+      !assigned 
+    ) {
+      return;
+    }
+
     axios
       .post("http://localhost:5000/employees", NewEmployee)
       .then((response) => {
