@@ -20,6 +20,61 @@ tr:nth-child(even) {
   background-color: $color-background-secondary;
 }
 
-.sort {
-  filter: red;
+.table {
+  &__wrapper {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-bottom: 1rem;
+  }
+
+  &__input {
+    width: 100%;
+    padding: 0.4rem 1rem;
+    border-radius: 1.25rem;
+    outline: none;
+    border: 2px solid $color-brand-primary;
+    font-family: sans-serif;
+    background-image: url("../../assets/icons/search.svg");
+    background-repeat: no-repeat;
+    background-position: center right 5%;
+    margin: 1.25rem 0 1rem;
+
+    &:focus {
+      border-color: $color-brand-secondary;
+    }
+
+    @include tablet {
+      margin: 0;
+      padding: 0.5rem 1rem;
+
+    }
+    @include desktop {
+      width: 20rem;
+      margin-right: 1rem;
+    }
+  }
+
+  &__button {
+    cursor: pointer;
+    border-radius: 1.25rem;
+    background-color:$color-brand-secondary;
+    border: none;
+    color: $color-background-primary;
+    padding: .25rem 1rem;
+    flex-grow:1;
+    text-decoration: none;
+    text-align: center;
+    @include tablet {
+        flex-grow: 0;
+    }
+        &:hover{
+            background-color: $color-brand-primary;
+        }
+      }
+
+  &__sort {
+    filter: red;
+  }
 }
+

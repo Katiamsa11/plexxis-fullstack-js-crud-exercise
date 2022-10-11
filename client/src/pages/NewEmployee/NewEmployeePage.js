@@ -1,5 +1,5 @@
-import React from 'react';
-import {TabTitle} from "../../utils/Utils";
+import React from "react";
+import { TabTitle } from "../../utils/Utils";
 import backArrow from "../../assets/icons/arrow_back-24px.svg";
 import errorImg from "../../assets/icons/error-24px.svg";
 import axios from "axios";
@@ -8,9 +8,9 @@ import { useState } from "react";
 import "../../pages/NewEmployee/NewEmployeePage.scss";
 
 function NewEmployeePage() {
-   //function to change tab title dynamically
-   TabTitle("Add New");
- //useNavigate to set up backward navigation
+  //function to change tab title dynamically
+  TabTitle("Add New");
+  //useNavigate to set up backward navigation
   const navigate = useNavigate();
   // Set State to manipulate the form values
   const [name, setName] = useState("");
@@ -29,7 +29,8 @@ function NewEmployeePage() {
   const [colorError, setColorError] = useState(false);
   const [branchError, setBranchError] = useState(false);
   const [assignedError, setAssignedError] = useState(false);
-      //create state generate success message
+
+  //create state generate success message
   const [success, setSuccess] = useState(false);
   const [isError, setIsError] = useState("");
 
@@ -96,18 +97,17 @@ function NewEmployeePage() {
 
     setAssigned(event.target.value);
   };
- 
 
-    //created new employee object to send back to the backend
-    const NewEmployee = {
-      name: name,
-      code: code,
-      profession: profession,
-      color: color,
-      city: city,
-      branch: branch,
-      assigned : assigned
-    };
+  //created new employee object to send back to the backend
+  const NewEmployee = {
+    name: name,
+    code: code,
+    profession: profession,
+    color: color,
+    city: city,
+    branch: branch,
+    assigned: assigned,
+  };
 
   //reset form inputs function
   const resetForm = () => {
@@ -120,7 +120,7 @@ function NewEmployeePage() {
     setAssigned("");
   };
 
-     //function to handle form submission
+  //function to handle form submission
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -145,185 +145,183 @@ function NewEmployeePage() {
     if (!assigned) {
       setAssignedError(true);
     }
-  
+
     axios
-    .post("http://localhost:8080/employees", NewEmployee)
-    .then((response) => {
-      setSuccess(true);
-    })
-    .catch((error) => {
-      console.log(error);
-      setIsError(true);
-    });
+      .post("http://localhost:8080/employees", NewEmployee)
+      .then((response) => {
+        setSuccess(true);
+      })
+      .catch((error) => {
+        console.log(error);
+        setIsError(true);
+      });
 
     resetForm();
-};
+  };
 
   return (
     <div className="employee-form">
-    <header className="employee-form__header">
-      <img
-        className="employee-form__back"
-        src={backArrow}
-        alt="arrow to navigate back"
-        onClick={() => navigate(-1)}
-      />
-      <h1 className="employee-form__title"> Add New Employee</h1>
-    </header>
-    <form  onSubmit={handleSubmit} className="employee-form__form">
-      <div className="employee-form__section employee-form__section--left">
-        <label className="employee-form__label">
-          Employee Name
-          <input
-          className={`employee-form__input ${
-            nameError ? "employee-form__input--error" : ""
-          }`}
-            type="text"
-            placeholder="Employee Name"
-            value={name}
-            onChange={handleChangeName}
-          />
-          {nameError && (
-            <p className="error">
-              <img src={errorImg} alt="error icon" className="error__icon" />
-              This field is required
-            </p>
-          )}
-        </label>
-        <label className="employee-form__label">
-        Employee Code
-          <input
-          className={`employee-form__input ${
-            codeError ? "employee-form__input--error" : ""
-          }`}
-            type="text"
-            placeholder="Employee Code"
-            value={code}
-            onChange={handleChangeCode}
-          />
-          {codeError && (
-            <p className="error">
-              <img src={errorImg} alt="error icon" className="error__icon" />
-              This field is required
-            </p>
-          )}
-        </label>
-        <label className="employee-form__label">
-          Employee Profession
-          <input
-          className={`employee-form__input ${
-            professionError ? "employee-form__input--error" : ""
-          }`}
-            type="text"
-            placeholder="City"
-            value={profession}
-            onChange={handleChangeProfession}
-          />
-          {professionError && (
-            <p className="error">
-              <img src={errorImg} alt="error icon" className="error__icon" />
-              This field is required
-            </p>
-          )}
-        </label>
-        <label className="employee-form__label">
-        Employee Color
-          <input
-          className={`employee-form__input ${
-            colorError ? "employee-form__input--error" : ""
-          }`}
-            type="text"
-            placeholder="Country"
-            value={color}
-            onChange={handleChangeColor}
-          />
-          {colorError && (
-            <p className="error">
-              <img src={errorImg} alt="error icon" className="error__icon" />
-              This field is required
-            </p>
-          )}
-        </label>
-      </div>
-      <div className="employee-form__section">
-        <label className="employee-form__label">
-          Employee City
-          <input
-          className={`employee-form__input ${
-            cityError ? "employee-form__input--error" : ""
-          }`}
-            type="text"
-            placeholder="Contact Name"
-            value={city}
-            onChange={handleChangeCity}
-          />
-          {cityError && (
-            <p className="error">
-              <img src={errorImg} alt="error icon" className="error__icon" />
-              This field is required
-            </p>
-          )}
-        </label>
-        <label className="employee-form__label">
-        Employee Branch
-          <input
-          className={`employee-form__input ${
-            branchError ? "employee-form__input--error" : ""
-          }`}
-            type="text"
-            placeholder="Employee Branch"
-            value={branch}
-            onChange={handleChangeBranch}
-          />
-          {branchError && (
-            <p className="error">
-              <img src={errorImg} alt="error icon" className="error__icon" />
-              This field is required
-            </p>
-          )}
-        </label>
-        <label className="employee-form__label">
-        Employee Status
-          <input
-          className={`employee-form__input ${
-            assignedError ? "employee-form__input--error" : ""
-          }`}
-            type="text"
-            placeholder="Phone Number"
-            value={assigned}
-            onChange={handleChangeAssigned}
-          />
-          {assignedError && (
-            <p className="error">
-              <img src={errorImg} alt="error icon" className="error__icon" />
-              This field is required
-            </p>
-          )}
-        </label>
-      </div>
-      <footer className="employee-form__footer">
-      <p className="newWarehouse-form__error">{isError}</p>
+      <header className="employee-form__header">
+        <img
+          className="employee-form__back"
+          src={backArrow}
+          alt="arrow to navigate back"
+          onClick={() => navigate(-1)}
+        />
+        <h1 className="employee-form__title"> Add New Employee</h1>
+      </header>
+      <form onSubmit={handleSubmit} className="employee-form__form">
+        <div className="employee-form__section employee-form__section--left">
+          <label className="employee-form__label">
+            Employee Name
+            <input
+              className={`employee-form__input ${
+                nameError ? "employee-form__input--error" : ""
+              }`}
+              type="text"
+              placeholder="Employee Name"
+              value={name}
+              onChange={handleChangeName}
+            />
+            {nameError && (
+              <p className="error">
+                <img src={errorImg} alt="error icon" className="error__icon" />
+                This field is required
+              </p>
+            )}
+          </label>
+          <label className="employee-form__label">
+            Employee Code
+            <input
+              className={`employee-form__input ${
+                codeError ? "employee-form__input--error" : ""
+              }`}
+              type="text"
+              placeholder="Employee Code"
+              value={code}
+              onChange={handleChangeCode}
+            />
+            {codeError && (
+              <p className="error">
+                <img src={errorImg} alt="error icon" className="error__icon" />
+                This field is required
+              </p>
+            )}
+          </label>
+          <label className="employee-form__label">
+            Employee Profession
+            <input
+              className={`employee-form__input ${
+                professionError ? "employee-form__input--error" : ""
+              }`}
+              type="text"
+              placeholder="Employee Profession"
+              value={profession}
+              onChange={handleChangeProfession}
+            />
+            {professionError && (
+              <p className="error">
+                <img src={errorImg} alt="error icon" className="error__icon" />
+                This field is required
+              </p>
+            )}
+          </label>
+          <label className="employee-form__label">
+            Employee Color
+            <input
+              className={`employee-form__input ${
+                colorError ? "employee-form__input--error" : ""
+              }`}
+              type="text"
+              placeholder="Employee Color"
+              value={color}
+              onChange={handleChangeColor}
+            />
+            {colorError && (
+              <p className="error">
+                <img src={errorImg} alt="error icon" className="error__icon" />
+                This field is required
+              </p>
+            )}
+          </label>
+        </div>
+        <div className="employee-form__section">
+          <label className="employee-form__label">
+            Employee City
+            <input
+              className={`employee-form__input ${
+                cityError ? "employee-form__input--error" : ""
+              }`}
+              type="text"
+              placeholder="Employee City"
+              value={city}
+              onChange={handleChangeCity}
+            />
+            {cityError && (
+              <p className="error">
+                <img src={errorImg} alt="error icon" className="error__icon" />
+                This field is required
+              </p>
+            )}
+          </label>
+          <label className="employee-form__label">
+            Employee Branch
+            <input
+              className={`employee-form__input ${
+                branchError ? "employee-form__input--error" : ""
+              }`}
+              type="text"
+              placeholder="Employee Branch"
+              value={branch}
+              onChange={handleChangeBranch}
+            />
+            {branchError && (
+              <p className="error">
+                <img src={errorImg} alt="error icon" className="error__icon" />
+                This field is required
+              </p>
+            )}
+          </label>
+          <label className="employee-form__label">
+            Employee Status
+            <select
+              className={`employee-form__input ${
+                assignedError ? "employee-form__input--error" : ""
+              }`}
+              type="select"
+              placeholder="status"
+              value={assigned}
+              onChange={handleChangeAssigned}
+            >
+              <option value=""></option>
+              <option value="Assigned">Assigned</option>
+              <option value="Unassigned">Unassigned</option>
+            </select>
+            {assignedError && (
+              <p className="error">
+                <img src={errorImg} alt="error icon" className="error__icon" />
+                This field is required
+              </p>
+            )}
+          </label>
+        </div>
+        <footer className="employee-form__footer">
+          <p className="employee-form__error">{isError}</p>
           {success && (
-            <p className="newWarehouse-form__error newWarehouse-form__error--success">
+            <p className="employee-form__error employee-form__error--success">
               Employee Successfully Added
             </p>
           )}
-        <Link
-          to="/"
-          className="employee-form__button button button--cancel"
-        >
-          Cancel
-        </Link>
-        <button
-          type="submit"
-          className="employee-form__button button button--primary"
-        >
-          + Add Employee
-        </button>
-      </footer>
-    </form>
-  </div>
-  )
+          <Link to="/" className=" employee-form__button">
+            Cancel
+          </Link>
+          <button type="submit" className="employee-form__button button">
+            + Add Employee
+          </button>
+        </footer>
+      </form>
+    </div>
+  );
 }
 
 export default NewEmployeePage;

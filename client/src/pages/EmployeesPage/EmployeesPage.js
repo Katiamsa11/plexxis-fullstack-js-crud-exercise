@@ -51,11 +51,10 @@ function EmployeesPage() {
           {
             Header: "Color",
             accessor: "color",
-            Cell:({cell:{value}}) => {
+            Cell: ({ cell: { value } }) => {
               return (
-                <div className="color" style={{background:value}}>
-                </div>
-              )
+                <div className="color" style={{ background: value }}></div>
+              );
             },
           },
           {
@@ -77,15 +76,19 @@ function EmployeesPage() {
           {
             Header: "Status",
             accessor: "assigned",
-            Cell:({cell:{value}}) => {
+            Cell: ({ cell: { value } }) => {
               const assignment = value.toString();
               return (
-                <div className="badge" style={{background: assignment === "true" ? "#567E9B" : "#AEAFB3"}}>
+                <div
+                  className="badge"
+                  style={{
+                    background: assignment === "true" ? "#567E9B" : "#AEAFB3",
+                  }}
+                >
                   {assignment === "true" ? "Assigned" : "Unassigned"}
                 </div>
-
-              )
-            }
+              );
+            },
           },
           {
             Header: "",
