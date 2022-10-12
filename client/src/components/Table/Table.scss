@@ -22,10 +22,15 @@ tr:nth-child(even) {
 
 .table {
   &__wrapper {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding-bottom: 1rem;
+    padding: 0 .5rem 1rem .5rem;
+
+    @include tablet {
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+      padding: 0 0 1rem 0;
+    }
+
   }
 
   &__input {
@@ -66,15 +71,14 @@ tr:nth-child(even) {
     text-decoration: none;
     text-align: center;
     @include tablet {
+      padding: .5rem 1rem;
         flex-grow: 0;
+        margin-left:.5rem;
     }
         &:hover{
             background-color: $color-brand-primary;
         }
       }
 
-  &__sort {
-    filter: red;
-  }
 }
 

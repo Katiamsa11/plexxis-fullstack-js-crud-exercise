@@ -143,15 +143,19 @@ function NewEmployeePage() {
     }
 
     axios
-      .post("http://localhost:5000/employees", NewEmployee)
-      .then((response) => {
+      .post("http://localhost:8080/employees", NewEmployee)
+      .then(() => {
         setSuccess(true);
+        setTimeout(() => {
+          setSuccess(false);
+        }, 2000);
       })
       .catch((error) => {
-        console.log(error);
-        setIsError(true);
+        setIsError(error.response.data.error);
+        if (error.response.data.error.length === 0) {
+          setIsError("Something went wrong. Try again!");
+        }
       });
-
     resetForm();
   };
 
@@ -169,7 +173,7 @@ function NewEmployeePage() {
       <form onSubmit={handleSubmit} className="employee-form__form">
         <div className="employee-form__section employee-form__section--left">
           <label className="employee-form__label">
-            Employee Name
+             Name
             <input
               className={`employee-form__input ${
                 nameError ? "employee-form__input--error" : ""
@@ -187,7 +191,7 @@ function NewEmployeePage() {
             )}
           </label>
           <label className="employee-form__label">
-            Employee Code
+            Code
             <input
               className={`employee-form__input ${
                 codeError ? "employee-form__input--error" : ""
@@ -205,7 +209,7 @@ function NewEmployeePage() {
             )}
           </label>
           <label className="employee-form__label">
-            Employee Profession
+           Profession
             <input
               className={`employee-form__input ${
                 professionError ? "employee-form__input--error" : ""
@@ -228,7 +232,7 @@ function NewEmployeePage() {
               className={`employee-form__input employee-form__color-input ${
                 colorError ? "employee-form__input--error" : ""
               }`}
-              type="color"
+              type= "color"
               value={color}
               onChange={handleChangeColor}
             />
@@ -242,7 +246,7 @@ function NewEmployeePage() {
         </div>
         <div className="employee-form__section">
           <label className="employee-form__label">
-            Employee City
+           City
             <input
               className={`employee-form__input ${
                 cityError ? "employee-form__input--error" : ""
@@ -260,7 +264,7 @@ function NewEmployeePage() {
             )}
           </label>
           <label className="employee-form__label">
-            Employee Branch
+            Branch
             <input
               className={`employee-form__input ${
                 branchError ? "employee-form__input--error" : ""

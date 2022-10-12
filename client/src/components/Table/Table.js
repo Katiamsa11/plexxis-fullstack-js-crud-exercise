@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "./Table.scss";
 import { useTable, useFilters, useSortBy } from "react-table";
 import { Link } from "react-router-dom";
-import sort from "../../assets/icons/sort.svg";
 
 function Table({ columns, data }) {
   // Create a state
@@ -51,7 +50,7 @@ function Table({ columns, data }) {
               {headerGroup.headers.map((column) => (
                 <th
                   {...column.getHeaderProps(column.getSortByToggleProps())}
-                  className={
+                  className = {
                     column.isSorted
                       ? column.isSortedDesc
                         ? 
@@ -61,14 +60,13 @@ function Table({ columns, data }) {
                   }
                 >
                   {column.render("Header")}
-                  <img className="sort" src={sort} alt="sorting icon"/>
                 </th>
               ))}
             </tr>
           ))}
         </thead>
         <tbody {...getTableBodyProps()}>
-          {rows.map((row, i) => {
+          {rows.map((row, id) => {
             prepareRow(row);
             return (
               <tr {...row.getRowProps()}>

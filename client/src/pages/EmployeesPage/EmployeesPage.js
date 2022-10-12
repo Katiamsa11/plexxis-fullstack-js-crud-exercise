@@ -3,6 +3,7 @@ import Table from "../../components/Table/Table";
 import LoadingPage from "../../components/Loading/LoadingPage";
 import imageDelete from "../../assets/icons/delete.svg";
 import imageEdit from "../../assets/icons/edit.svg";
+import sort from "../../assets/icons/sort.svg";
 import { fetchEmployees, TabTitle, deleteEmployee } from "../../utils/Utils";
 import { Link } from "react-router-dom";
 import "../EmployeesPage/EmployeesPage.scss";
@@ -27,11 +28,12 @@ function EmployeesPage() {
       });
   }, [reload]);
 
-  //delete bookings
+  //delete employees
   const handleDelete = useCallback(
     (id) => {
       deleteEmployee(id)
         .then((response) => {
+          //reload data after deleted
           setReload(reload + 1);
         })
         .catch((error) => {
@@ -41,6 +43,7 @@ function EmployeesPage() {
     },
     [reload]
   );
+
 
   const columns = useMemo(
     () => [
@@ -93,7 +96,7 @@ function EmployeesPage() {
             },
           },
           {
-            Header: "",
+            Header: <img className="sort" src={sort} alt="sorting icon"/>,
             accessor: (originalRow) => (
               <div>
                 <img
@@ -114,10 +117,12 @@ function EmployeesPage() {
     [handleDelete]
   );
 
+  //created a loading page to appear if the data is not present.
   if (data.length === 0) {
     return <LoadingPage />;
   }
 
+  //If an error is present on the data
   if (isError) {
     return <h1>....There was an unexpected Error. Refresh page!</h1>;
   }

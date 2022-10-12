@@ -16,26 +16,25 @@ body {
 //Typography
 
 h1 {
-  font-size: 1.5rem;
+  font-size: 1rem;
   line-height: 2rem;
-  font-weight: 600;
- 
+  font-weight: 300;
 
   @include tablet {
-    font-size: 2rem;
-    line-height: 3.25rem;
+    font-size: 1.5rem;
+    line-height: 2.25rem;
   }
 
   @include desktop {
-    font-size: 3.5rem;
-    line-height: 3.75rem;
+    font-size: 2rem;
+    line-height: 2.75rem;
   }
 }
 
 h2 {
   font-size: 1.75rem;
   line-height: 2rem;
-  font-weight: 600;
+  font-weight: 300;
 
 
   @include tablet {
@@ -44,32 +43,15 @@ h2 {
   }
 }
 
-h3 {
-  font-size: 0.8125rem;
-  line-height: 1.125rem;
-  font-weight: 600;
- 
-
-  @include tablet {
-    font-size: 0.875rem;
-    line-height: 1.375rem;
-  }
-}
-
-h4 {
-  font-size: 1.1rem;
-  line-height: 1.25rem;
-  margin: .75 0;
-}
 
 p {
-  font-size: 1rem;
+  font-size: 0.875rem;;
   line-height: 1.15rem;
-  font-weight: 400;
+  font-weight: 300;
   margin: .5rem 0;
 
   @include tablet {
-    font-size: 0.875rem;
+    font-size: 1rem;
     line-height: 1.375rem;
   }
 }
@@ -78,10 +60,18 @@ a {
   font-size: 0.75rem;
   line-height: 1.25rem;
   font-weight: 600;
+
+  @include tablet {
+    font-size: 1rem;
+  }
 }
 
 button {
   font-size: 0.75rem;
   line-height: 1.25rem;
   font-weight: 600;
+
+  @include tablet {
+    font-size: 1rem;
+  }
 }
