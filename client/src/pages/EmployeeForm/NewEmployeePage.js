@@ -9,7 +9,7 @@ import "../EmployeeForm/EmployeeForm.scss";
 
 function NewEmployeePage() {
   //function to change tab title dynamically
-  TabTitle("Add New");
+  TabTitle("Add New Employee");
   //useNavigate to set up backward navigation
   const navigate = useNavigate();
   // Set State to manipulate the form values
@@ -124,6 +124,7 @@ function NewEmployeePage() {
   const handleSubmit = (event) => {
     event.preventDefault();
 
+    //form validation
     if (!name) {
       setNameError(true);
     }
@@ -153,7 +154,7 @@ function NewEmployeePage() {
       !color ||
       !city ||
       !branch ||
-      !assigned 
+      !assigned
     ) {
       return;
     }

@@ -34,7 +34,7 @@ function EditEmployeePage() {
   const [success, setSuccess] = useState(false);
   const [isError, setIsError] = useState("");
 
-  //  useParams to get the id of the selected warehouse
+  //useParams to get the id of the selected employee
   const { id } = useParams();
 
   //handle change to control the form elements
@@ -126,7 +126,7 @@ function EditEmployeePage() {
   //function to handle form submission
   const handleSubmit = (event) => {
     event.preventDefault();
-
+    //form validation
     if (!name) {
       setNameError(true);
     }
@@ -155,7 +155,7 @@ function EditEmployeePage() {
       !color ||
       !city ||
       !branch ||
-      !assigned 
+      !assigned
     ) {
       return;
     }
