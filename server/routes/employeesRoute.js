@@ -2,6 +2,7 @@ const express = require("express");
 const db = require("../data/db-config");
 const router = express.Router();
 
+//Created get request to display all employees
 router.get("/", async (req, res) => {
   try {
     const employees = await db.find();
@@ -11,6 +12,7 @@ router.get("/", async (req, res) => {
   }
 });
 
+//Created get request to display employees by id
 router.get("/employee/:id", async (req, res) => {
   try {
     const employees = await db.findById(req.params.id);
@@ -22,6 +24,7 @@ router.get("/employee/:id", async (req, res) => {
   }
 });
 
+//Created a post request to create a new employee
 router.post("/", async (req, res) => {
   try {
     const employees = await db.insert(req.body);
@@ -29,7 +32,7 @@ router.post("/", async (req, res) => {
       ? res.status(201).json(employees)
       : res.status(400).json({
           error:
-            "please fill out all required fields before posting a new employe",
+            "please fill out all required fields before posting a new employee",
         });
   } catch (error) {
     res.status(500).json({
@@ -38,6 +41,7 @@ router.post("/", async (req, res) => {
   }
 });
 
+//Created a put request to update a single employee
 router.put("/employee/:id", async (req, res) => {
   try {
     const employees = await db.update(req.params.id, req.body);
@@ -53,6 +57,7 @@ router.put("/employee/:id", async (req, res) => {
   }
 });
 
+//Created a delete request to delete a single employee
 router.delete("/employee/:id", async (req, res) => {
   try {
     const employees = await db.remove(req.params.id);

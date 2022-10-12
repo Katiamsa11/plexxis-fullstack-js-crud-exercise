@@ -17,6 +17,7 @@ app.get("/", (_req, res) => {
   res.send("Welcome to Plex Employees API");
 });
 
+//listening on port 5000
 app.listen(PORT, () => {
   console.log(`I'm here and I'm listening on port`+ ' ' + PORT );
 });
