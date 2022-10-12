@@ -4,26 +4,24 @@
 .header {
   background-color: $color-brand-primary;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  position: fixed;
   width: 100%;
-  padding: .75rem 1rem;
-  z-index: 100;
-  border-bottom: 1px solid rgb(215, 214, 214);
+  padding: .75rem 4rem;
 
-  @include tablet {
-      padding: .75rem 2.25rem;
-  }
-
-  @include desktop {
-      padding: .5rem calc((100vw - 69rem)/2);
+  &__title {
+    color: $color-background-primary;
+    font-size: 2rem;
+    font-weight: 400;
+    padding-left: 1rem;
   }
 
   &__link {
       text-decoration: none;
       text-align: center;
+  }
 
+  &__logo {
+    height: 3rem;
   }
 
 }

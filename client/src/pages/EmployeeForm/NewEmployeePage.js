@@ -19,7 +19,7 @@ function NewEmployeePage() {
   const [profession, setProfession] = useState("");
   const [color, setColor] = useState("");
   const [branch, setBranch] = useState("");
-  const [assigned, setAssigned] = useState("");
+  const [assigned, setAssigned] = useState(false);
 
   //States to generate error messages
   const [nameError, setNameError] = useState(false);
@@ -28,7 +28,6 @@ function NewEmployeePage() {
   const [professionError, setProfessionError] = useState(false);
   const [colorError, setColorError] = useState(false);
   const [branchError, setBranchError] = useState(false);
-  const [assignedError, setAssignedError] = useState(false);
 
   //create state generate success message
   const [success, setSuccess] = useState(false);
@@ -90,12 +89,7 @@ function NewEmployeePage() {
   };
 
   const handleChangeAssigned = (event) => {
-    if (assignedError) {
-      setAssignedError(false);
-    }
-    setIsError("");
-
-    setAssigned(event.target.value);
+    setAssigned(event.target.checked);
   };
 
   //created new employee object to send back to the backend
@@ -143,19 +137,8 @@ function NewEmployeePage() {
     if (!branch) {
       setBranchError(true);
     }
-    if (!assigned) {
-      setAssignedError(true);
-    }
 
-    if (
-      !name ||
-      !code ||
-      !profession ||
-      !color ||
-      !city ||
-      !branch ||
-      !assigned
-    ) {
+    if (!name || !code || !profession || !color || !city || !branch) {
       return;
     }
 
@@ -239,14 +222,13 @@ function NewEmployeePage() {
               </p>
             )}
           </label>
-          <label className="employee-form__label">
-            Employee Color
+          <label className="employee-form__label employee-form__color-label">
+            Color
             <input
-              className={`employee-form__input ${
+              className={`employee-form__input employee-form__color-input ${
                 colorError ? "employee-form__input--error" : ""
               }`}
-              type="text"
-              placeholder="Employee Color"
+              type="color"
               value={color}
               onChange={handleChangeColor}
             />
@@ -295,27 +277,13 @@ function NewEmployeePage() {
               </p>
             )}
           </label>
-          <label className="employee-form__label">
-            Employee Status
-            <select
-              className={`employee-form__input ${
-                assignedError ? "employee-form__input--error" : ""
-              }`}
-              type="select"
-              placeholder="status"
-              value={assigned}
+          <label className="employee-form__label employee-form__assigned-label">
+            Assign Employee
+            <input
+              className="employee-form__input employee-form__assigned-input"
+              type="checkbox"
               onChange={handleChangeAssigned}
-            >
-              <option value=""></option>
-              <option value="Assigned">Assigned</option>
-              <option value="Unassigned">Unassigned</option>
-            </select>
-            {assignedError && (
-              <p className="error">
-                <img src={errorImg} alt="error icon" className="error__icon" />
-                This field is required
-              </p>
-            )}
+            />
           </label>
         </div>
         <footer className="employee-form__footer">

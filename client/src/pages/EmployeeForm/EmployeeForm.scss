@@ -84,6 +84,26 @@
     }
   }
 
+  &__assigned-label {
+    display: inline-block;
+    margin-top: 2.5rem;
+  }
+
+  &__assigned-input {
+    accent-color: $color-brand-secondary;
+    margin-left: 1rem;
+    width: 1rem;
+    height: 1rem;
+  }
+
+  &__color-input {
+    width: 3rem;
+    height: 3rem;
+    background-color: $color-background-primary;
+    border: none;
+    padding: 0;
+  }
+
   &__footer {
     flex-basis: 100%;
     background-color: $color-background-secondary;
@@ -92,10 +112,6 @@
     justify-content: flex-end;
     margin-top: 1.5rem;
     flex-wrap: wrap;
-    @include tablet {
-      padding: 1rem 2rem;
-      margin-top: 0.5rem;
-    }
   }
 
   &__error {
