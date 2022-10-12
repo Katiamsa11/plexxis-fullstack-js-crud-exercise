@@ -17,7 +17,7 @@ function EditEmployeePage() {
   const [code, setCode] = useState("");
   const [city, setCity] = useState("");
   const [profession, setProfession] = useState("");
-  const [color, setColor] = useState("");
+  const [color, setColor] = useState("#5e72e4");
   const [branch, setBranch] = useState("");
   const [assigned, setAssigned] = useState(false);
 
@@ -28,7 +28,7 @@ function EditEmployeePage() {
   const [professionError, setProfessionError] = useState(false);
   const [colorError, setColorError] = useState(false);
   const [branchError, setBranchError] = useState(false);
- 
+
   //create state generate success message
   const [success, setSuccess] = useState(false);
   const [isError, setIsError] = useState("");
@@ -51,7 +51,6 @@ function EditEmployeePage() {
       setCodeError(false);
     }
     setIsError("");
-
     setCode(event.target.value);
   };
 
@@ -140,14 +139,7 @@ function EditEmployeePage() {
       setBranchError(true);
     }
 
-    if (
-      !name ||
-      !code ||
-      !profession ||
-      !color ||
-      !city ||
-      !branch 
-    ) {
+    if (!name || !code || !profession || !color || !city || !branch) {
       return;
     }
 
@@ -236,7 +228,7 @@ function EditEmployeePage() {
             )}
           </label>
           <label className="employee-form__label employee-form__color-label">
-           Color
+            Color
             <input
               className={`employee-form__input employee-form__color-input ${
                 colorError ? "employee-form__input--error" : ""
@@ -273,7 +265,7 @@ function EditEmployeePage() {
             )}
           </label>
           <label className="employee-form__label">
-             Branch
+            Branch
             <input
               className={`employee-form__input ${
                 branchError ? "employee-form__input--error" : ""
@@ -291,12 +283,12 @@ function EditEmployeePage() {
             )}
           </label>
           <label className="employee-form__label employee-form__assigned-label">
-          Assign Employee
-          <input
-          className="employee-form__input employee-form__assigned-input"
-          type="checkbox"
-          onChange={handleChangeAssigned}
-        />
+            Assign Employee
+            <input
+              className="employee-form__input employee-form__assigned-input"
+              type="checkbox"
+              onChange={handleChangeAssigned}
+            />
           </label>
         </div>
         <footer className="employee-form__footer">
@@ -306,7 +298,7 @@ function EditEmployeePage() {
               Employee Successfully Updated
             </p>
           )}
-          <Link to="/" className= "employee-form__button ">
+          <Link to="/" className="employee-form__button ">
             Cancel
           </Link>
           <button type="submit" className="employee-form__button button">

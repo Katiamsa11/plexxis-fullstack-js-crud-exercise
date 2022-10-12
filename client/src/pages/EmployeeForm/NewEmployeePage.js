@@ -17,7 +17,7 @@ function NewEmployeePage() {
   const [code, setCode] = useState("");
   const [city, setCity] = useState("");
   const [profession, setProfession] = useState("");
-  const [color, setColor] = useState("");
+  const [color, setColor] = useState("#5e72e4");
   const [branch, setBranch] = useState("");
   const [assigned, setAssigned] = useState(false);
 
@@ -173,7 +173,7 @@ function NewEmployeePage() {
       <form onSubmit={handleSubmit} className="employee-form__form">
         <div className="employee-form__section employee-form__section--left">
           <label className="employee-form__label">
-             Name
+            Name
             <input
               className={`employee-form__input ${
                 nameError ? "employee-form__input--error" : ""
@@ -209,7 +209,7 @@ function NewEmployeePage() {
             )}
           </label>
           <label className="employee-form__label">
-           Profession
+            Profession
             <input
               className={`employee-form__input ${
                 professionError ? "employee-form__input--error" : ""
@@ -232,7 +232,7 @@ function NewEmployeePage() {
               className={`employee-form__input employee-form__color-input ${
                 colorError ? "employee-form__input--error" : ""
               }`}
-              type= "color"
+              type="color"
               value={color}
               onChange={handleChangeColor}
             />
@@ -246,7 +246,7 @@ function NewEmployeePage() {
         </div>
         <div className="employee-form__section">
           <label className="employee-form__label">
-           City
+            City
             <input
               className={`employee-form__input ${
                 cityError ? "employee-form__input--error" : ""
