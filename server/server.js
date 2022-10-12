@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const app = express();
 const employees = require("./routes/employeesRoute");
-let PORT = 5000;
+let PORT = 8080;
 
 // added middleware to allow any origin (front-end) to interact with API
 app.use(cors());

@@ -68,7 +68,7 @@ router.delete("/employee/:id", async (req, res) => {
         });
   } catch (error) {
     res.status(500).json({
-      error: "the employee data could not be delete.",
+      error: "the employee data could not be deleted.",
     });
   }
 });
