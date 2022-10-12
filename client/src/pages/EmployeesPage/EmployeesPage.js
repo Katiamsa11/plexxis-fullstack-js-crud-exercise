@@ -3,7 +3,6 @@ import Table from "../../components/Table/Table";
 import LoadingPage from "../../components/Loading/LoadingPage";
 import imageDelete from "../../assets/icons/delete.svg";
 import imageEdit from "../../assets/icons/edit.svg";
-import sort from "../../assets/icons/sort.svg";
 import { fetchEmployees, TabTitle, deleteEmployee } from "../../utils/Utils";
 import { Link } from "react-router-dom";
 import "../EmployeesPage/EmployeesPage.scss";
@@ -43,7 +42,6 @@ function EmployeesPage() {
     },
     [reload]
   );
-
 
   const columns = useMemo(
     () => [
@@ -96,7 +94,7 @@ function EmployeesPage() {
             },
           },
           {
-            Header: <img className="sort" src={sort} alt="sorting icon"/>,
+            Header: "",
             accessor: (originalRow) => (
               <div>
                 <img

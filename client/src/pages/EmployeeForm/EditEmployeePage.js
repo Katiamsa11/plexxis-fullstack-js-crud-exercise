@@ -17,7 +17,7 @@ function EditEmployeePage() {
   const [code, setCode] = useState("");
   const [city, setCity] = useState("");
   const [profession, setProfession] = useState("");
-  const [color, setColor] = useState("#5e72e4");
+  const [color, setColor] = useState("#44566C");
   const [branch, setBranch] = useState("");
   const [assigned, setAssigned] = useState(false);
 
@@ -110,7 +110,6 @@ function EditEmployeePage() {
     setName("");
     setCode("");
     setProfession("");
-    setColor("");
     setCity("");
     setBranch("");
     setAssigned("");

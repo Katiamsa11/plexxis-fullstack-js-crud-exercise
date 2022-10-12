@@ -34,7 +34,7 @@ function Table({ columns, data }) {
     <section className="table">
       <div className="table__wrapper">
         <input
-        className="table__input"
+          className="table__input"
           value={filterInput}
           onChange={handleFilterChange}
           placeholder={"Search name"}
@@ -50,11 +50,10 @@ function Table({ columns, data }) {
               {headerGroup.headers.map((column) => (
                 <th
                   {...column.getHeaderProps(column.getSortByToggleProps())}
-                  className = {
+                  className={
                     column.isSorted
                       ? column.isSortedDesc
-                        ? 
-                        "sort-desc"
+                        ? "sort-desc"
                         : "sort-asc"
                       : ""
                   }
