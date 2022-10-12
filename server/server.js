@@ -14,10 +14,10 @@ app.use("/employees", employees);
 
 // basic home route
 app.get("/", (_req, res) => {
-  res.send("Welcome to Plex Employees API");
+  res.send("Welcome to Plexxis Employees API");
 });
 
-//listening on port 5000
+//listening on port 8080
 app.listen(PORT, () => {
-  console.log(`I'm here and I'm listening on port`+ ' ' + PORT );
+  console.log(`I'm here and I'm listening on port` + " " + PORT);
 });
